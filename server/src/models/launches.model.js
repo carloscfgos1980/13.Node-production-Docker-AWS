@@ -39,7 +39,7 @@ async function populateLaunches(){
             return payload['customers'];
         });
 
-    const launch = {
+        const launch = {
             flightNumber: launchDoc['flight_number'],
             mission: launchDoc['name'],
             rocket: launchDoc['rocket']['name'],
@@ -49,11 +49,10 @@ async function populateLaunches(){
             upcoming: launchDoc['upcoming'],
             success: launchDoc['success']
         };
+        console.log(`${launch.flightNumber} ${launch.mission}`)
 
-    console.log(`${launch.flightNumber} ${launch.mission}`)
-
-    //TODO: Populate launches collection
-    await saveLaunch(launch);
+        //TODO: Populate launches collection
+        await saveLaunch(launch);
     }
 }
 

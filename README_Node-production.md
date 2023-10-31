@@ -33,3 +33,15 @@ Then in google:
 localhost:80
 
 It shows the images
+
+# Lesson 7. Your docker account
+
+https://academy.zerotomastery.io/courses/1206554/lectures/33236395
+
+# Lesson 8. Creating a Docker file
+
+https://academy.zerotomastery.io/courses/1206554/lectures/33302250
+
+# Lesson 9. Improving our Ocker file with layer
+
+https://academy.zerotomastery.io/courses/1206554/lectures/33302252
