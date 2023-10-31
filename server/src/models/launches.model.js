@@ -4,6 +4,8 @@ const axios = require('axios');
 
 const SPACEX_API_URL = 'https://api.spacexdata.com/v4/launches/query';
 
+const DEFAULT_FLIGHT_NUMBER = 100;
+
 async function populateLaunches(){
     console.log('Downloading some data...');
     const response = await axios.post(SPACEX_API_URL, {
@@ -26,7 +28,7 @@ async function populateLaunches(){
             ]
         }
     });
-    
+
     if(!response.status === 200){
         console.log('Problem downloading data');
         throw new Error('Launch download data fail')
@@ -85,7 +87,7 @@ async function getLatestFlightNumber(){
         .sort('-flightNumber');
 
     if(!latestLaunch){
-        return DEAFULT_FLIGHT_NUMBER
+        return DEFAULT_FLIGHT_NUMBER
     }
     
     return latestLaunch.flightNumber
