@@ -42,9 +42,49 @@ https://academy.zerotomastery.io/courses/1206554/lectures/33236395
 
 https://academy.zerotomastery.io/courses/1206554/lectures/33302250
 
-# Lesson 9. Improving our Ocker file with layer
+1. Install docker extention in VSCode
+
+2. Create Docker file in the root of nasa-project
+
+# Lesson 9. Improving our Docker file with layer
 
 https://academy.zerotomastery.io/courses/1206554/lectures/33302252
+
+1. Docker file:
+
+FROM node:lts-alpine
+
+WORKDIR /app
+
+COPY package\*.json ./
+
+COPY client/package\*.json client/
+RUN npm run install-client --omit=dev
+
+COPY server/package\*.json server/
+RUN npm run install-server --omit=dev
+
+COPY client/ client
+RUN npm run build --prefix client
+
+COPY server/ server
+
+USER node
+
+CMD ["npm", "start", "--prefix", "server"]
+
+EXPOSE 8000
+
+2. create a file to ignore folders and files that we dont want to be included in Docker image. this file is name <.dockerignore>
+
+2.1 Content inside .dockerignore:
+.git
+
+\*/node_modules
+
+server/public
+
+- Note: We don want to include the client-production file in the server but instead get e fresh on, the same with the node_modules. That is why we include them in .dockerignore
 
 # Lesson 10. Updating our API URL
 
@@ -91,6 +131,10 @@ https://academy.zerotomastery.io/courses/1206554/lectures/33236397
 
 https://academy.zerotomastery.io/courses/1206554/lectures/33344735
 
+1. Select Free Tier Only option
+
+EC2 is where our website will be storage and host it
+
 # Lesson 16. Creating an EC2 Instance 2: Security
 
 https://academy.zerotomastery.io/courses/1206554/lectures/33320966
@@ -105,11 +149,17 @@ SSH stands for Security Shell
 
 https://academy.zerotomastery.io/courses/1206554/lectures/33345295
 
-Just follow Amazon instructions
+- Just follow Amazon instructions to create a key pair
+
+1. Download the key pair and copy to a folder next to oir project but never inside the project otherwise if we upload to repository in github, ge can accidentaly leak the key anf give access to our
+
+2. Witht the terminal, go to the folder where we have the key pair and run the command is given by AWS (Amazon)
 
 # Lesson 19. Setting Up Our EC2 Server
 
 https://academy.zerotomastery.io/courses/1206554/lectures/33315729
+
+- Install Docker in our EC2 in AWS.
 
 LINUX terminal in Amazon:
 
